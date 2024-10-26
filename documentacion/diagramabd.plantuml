@@ -1,0 +1,46 @@
+@startuml
+hide circle 
+skinparam linetype ortho 
+
+entity "Funcionario" as Funcionario #LightBlue {
+    *numero_id : varchar(20)
+    *grupo_familiar_id : int <<FK>>
+    --
+    nombres : varchar(50)
+    apellidos : varchar(50)
+    estado_civil : varchar(20)
+    sexo : varchar(10)
+    direccion : varchar(100)
+    telefono : varchar(15)
+    fecha_nacimiento : date
+}
+
+entity "GrupoFamiliar" as GrupoFamiliar #LightBlue {
+    *id : int <<generated>>
+    --
+    rol : varchar(20)
+}
+
+entity "MiembroFamiliar" as MiembroFamiliar #LightBlue {
+    *id : int <<generated>>
+    *grupo_familiar_id : int <<FK>>
+    --
+    nombre : varchar(50)
+    parentesco : varchar(20)
+    edad : int
+}
+
+entity "InformacionAcademica" as InformacionAcademica #LightBlue {
+    *id : int <<generated>>
+    *funcionario_id : varchar(20) <<FK>>
+    --
+    universidad : varchar(100)
+    nivel_estudio : varchar(50)
+    titulo : varchar(50)
+}
+
+Funcionario }o--|| GrupoFamiliar : "pertenece"
+GrupoFamiliar ||--o{ MiembroFamiliar : "incluye"
+Funcionario }o--|| InformacionAcademica : "posee"
+
+@enduml
