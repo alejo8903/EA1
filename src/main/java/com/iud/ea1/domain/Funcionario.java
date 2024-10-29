@@ -120,9 +120,4 @@ public class Funcionario {
     public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
-
-    
-    
-    
-
 }

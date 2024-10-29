@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.iud.ea1.dao;
 
 import com.iud.ea1.domain.Funcionario;
@@ -13,10 +9,6 @@ import jakarta.persistence.EntityManagerFactory;
 import java.time.LocalDate;
 import java.util.List;
 
-/**
- *
- * @author alejo
- */
 public class FuncionarioDAO {
     
     private EntityManagerFactory emf = JPAUtil.getEntityManagerFactory();
@@ -63,7 +55,7 @@ public class FuncionarioDAO {
         em.getTransaction().commit();
         em.close();
     }
-        
+    
     public void eliminarFuncionarioPorId(int id) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
