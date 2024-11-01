@@ -4,6 +4,7 @@ import com.iud.ea1.domain.InformacionAcademica;
 import com.iud.ea1.util.JPAUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.PersistenceException;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class InformacionAcademicaDAO {
 
     private static String getALL = "SELECT i FROM InformacionAcademica i";
 
-    public void crearInformacionAcademica(InformacionAcademica informacionAcademica) {
+    public void crearInformacionAcademica(InformacionAcademica informacionAcademica) throws PersistenceException{
     EntityManager em = emf.createEntityManager();
     em.getTransaction().begin();
     em.persist(informacionAcademica);
@@ -25,21 +26,21 @@ public class InformacionAcademicaDAO {
     em.close();
     }
 
-    public List<InformacionAcademica> obtenerInformacionesAcademicas() {
+    public List<InformacionAcademica> obtenerInformacionesAcademicas() throws PersistenceException{
     EntityManager em = emf.createEntityManager();
     List<InformacionAcademica> informacionesAcademicas = em.createQuery(getALL, InformacionAcademica.class).getResultList();
     em.close();
     return informacionesAcademicas;
     }
 
-    public InformacionAcademica obtenerPorId(int id) {
+    public InformacionAcademica obtenerPorId(int id) throws PersistenceException{
     EntityManager em = emf.createEntityManager();
     InformacionAcademica informacionAcademica = em.find(InformacionAcademica.class, id);
     em.close();
     return informacionAcademica;
     }
 
-    public void editarInformacionAcademicaPorId(int id, InformacionAcademica nuevaInformacionAcademica) {
+    public void editarInformacionAcademicaPorId(int id, InformacionAcademica nuevaInformacionAcademica) throws PersistenceException{
     EntityManager em = emf.createEntityManager();
     em.getTransaction().begin();
     InformacionAcademica informacionAcademica = em.find(InformacionAcademica.class, id);
@@ -54,7 +55,7 @@ public class InformacionAcademicaDAO {
     em.close();
     }
 
-    public void eliminarInformacionAcademicaPorId(int id) {
+    public void eliminarInformacionAcademicaPorId(int id) throws PersistenceException{
     EntityManager em = emf.createEntityManager();
     em.getTransaction().begin();
     InformacionAcademica informacionAcademica = em.find(InformacionAcademica.class, id);

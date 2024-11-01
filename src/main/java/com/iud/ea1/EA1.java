@@ -5,6 +5,7 @@
 package com.iud.ea1;
 
 import com.iud.ea1.dao.FuncionarioDAO;
+import com.iud.ea1.presentation.Principal;
 import io.github.cdimascio.dotenv.Dotenv;
 
 /**
@@ -17,7 +18,9 @@ public class EA1 {
 
     public static void main(String[] args) {
         Dotenv dotenv = Dotenv.load();
-        System.out.println(dotenv.get("URL_DB"));
+        Principal principal = new Principal();
+        principal.setVisible(Boolean.TRUE);
+        principal.setLocationRelativeTo(null);
         
         
     }

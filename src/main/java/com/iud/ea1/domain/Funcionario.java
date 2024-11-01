@@ -4,13 +4,8 @@
  */
 package com.iud.ea1.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
 /**
@@ -21,22 +16,25 @@ import java.time.LocalDate;
 public class Funcionario {
 
     @Id
-    private int funcionarioId;
+    @Column(name = "FUNCIONARIO_ID")
+    private String funcionarioId;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ID")
+    @JoinColumn(name = "GRUPO_FAMILIAR_ID")
     private GrupoFamiliar grupofamiliarId;
     private String nombre;
     private String apellido;
+    @Column(name = "ESTADO_CIVIL")
     private String estadoCivil;
     private String sexo;
     private String direccion;
     private String telefono;
-    private LocalDate fecha_nacimiento;
+    @Column(name = "FECHA_NACIMIENTO")
+    private LocalDate fechaNacimiento;
 
     public Funcionario() {
     }
 
-    public Funcionario(int funcionarioId, GrupoFamiliar grupofamiliarId, String nombre, String apellido, String estadoCivil, String sexo, String direccion, String telefono, LocalDate fecha_nacimiento) {
+    public Funcionario(String funcionarioId, GrupoFamiliar grupofamiliarId, String nombre, String apellido, String estadoCivil, String sexo, String direccion, String telefono, LocalDate fecha_nacimiento) {
         this.funcionarioId = funcionarioId;
         this.grupofamiliarId = grupofamiliarId;
         this.nombre = nombre;
@@ -45,14 +43,14 @@ public class Funcionario {
         this.sexo = sexo;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.fecha_nacimiento = fecha_nacimiento;
+        this.fechaNacimiento = fecha_nacimiento;
     }
 
-    public int getFuncionarioId() {
+    public String getFuncionarioId() {
         return funcionarioId;
     }
 
-    public void setFuncionarioId(int funcionarioId) {
+    public void setFuncionarioId(String funcionarioId) {
         this.funcionarioId = funcionarioId;
     }
 
@@ -112,11 +110,11 @@ public class Funcionario {
         this.telefono = telefono;
     }
 
-    public LocalDate getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setFechaNacimiento(LocalDate fecha_nacimiento) {
+        this.fechaNacimiento = fecha_nacimiento;
     }
 }

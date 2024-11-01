@@ -5,6 +5,7 @@ import com.iud.ea1.domain.GrupoFamiliar;
 import com.iud.ea1.util.JPAUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.PersistenceException;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,7 +16,7 @@ public class FuncionarioDAO {
     
     private static String getALL = "SELECT f FROM Funcionario f";
     
-    public void crearFuncionario(Funcionario funcionario) {
+    public void crearFuncionario(Funcionario funcionario) throws PersistenceException{
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(funcionario);
@@ -23,21 +24,21 @@ public class FuncionarioDAO {
         em.close();
     }
     
-    public List<Funcionario> obtenerFuncionarios(){
+    public List<Funcionario> obtenerFuncionarios()throws PersistenceException{
         EntityManager em = emf.createEntityManager();
         List<Funcionario> funcionarios = em.createQuery(getALL,Funcionario.class).getResultList();
         em.close();
         return funcionarios;
     }
     
-    public Funcionario obtenerPorId(int id){
+    public Funcionario obtenerPorId(int id) throws PersistenceException{
         EntityManager em = emf.createEntityManager();
         Funcionario funcionario = em.find(Funcionario.class, id);
         em.close();
         return funcionario;
     }
 
-    public void editarFuncionarioPorId(int id, Funcionario nuevoFuncionario) {
+    public void editarFuncionarioPorId(int id, Funcionario nuevoFuncionario) throws PersistenceException{
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Funcionario funcionario = em.find(Funcionario.class, id);
@@ -48,7 +49,7 @@ public class FuncionarioDAO {
         funcionario.setSexo(nuevoFuncionario.getSexo());
         funcionario.setDireccion(nuevoFuncionario.getDireccion());
         funcionario.setTelefono(nuevoFuncionario.getTelefono());
-        funcionario.setFecha_nacimiento(nuevoFuncionario.getFecha_nacimiento());
+        funcionario.setFechaNacimiento(nuevoFuncionario.getFechaNacimiento());
         funcionario.setGrupofamiliarId(nuevoFuncionario.getGrupofamiliarId());
         em.merge(funcionario);
         }
@@ -56,7 +57,7 @@ public class FuncionarioDAO {
         em.close();
     }
     
-    public void eliminarFuncionarioPorId(int id) {
+    public void eliminarFuncionarioPorId(int id) throws PersistenceException{
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Funcionario funcionario = em.find(Funcionario.class, id);
