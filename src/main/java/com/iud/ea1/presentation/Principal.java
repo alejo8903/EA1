@@ -28,6 +28,7 @@ public class Principal extends javax.swing.JFrame {
     private GrupoFamiliar grupoFamiliar;
     private ModelarTabla modelarTablaFuncionarios;
     private DefaultTableModel modelFuncionarios;
+    private boolean isEdit = false;
 
     /**
      * Creates new form Principal
@@ -82,12 +83,9 @@ public class Principal extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableFuncionarios = new javax.swing.JTable();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jTextFieldCCSearch = new javax.swing.JTextField();
-        jTextFieldNameSearch = new javax.swing.JTextField();
-        jTextFieldLastNameSearch = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jTextFieldSearch = new javax.swing.JTextField();
+        jButtonEdit = new javax.swing.JButton();
+        jButtonDelete = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -107,12 +105,12 @@ public class Principal extends javax.swing.JFrame {
         jTextFieldCc = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jComboBoxRol = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        jButtonSave = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel9.setText("Cedula");
+        jLabel9.setText("Busqueda");
 
         jTableFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,53 +123,53 @@ public class Principal extends javax.swing.JFrame {
         jTableFuncionarios.setMaximumSize(new java.awt.Dimension(500, 80));
         jScrollPane1.setViewportView(jTableFuncionarios);
 
-        jLabel10.setText("Nombre");
+        jTextFieldSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldSearchKeyPressed(evt);
+            }
+        });
 
-        jLabel11.setText("Apellido");
+        jButtonEdit.setText("Editar");
+        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Buscar");
+        jButtonDelete.setText("Eliminar");
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 850, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel9)
-                        .addGap(112, 112, 112)
-                        .addComponent(jLabel10)
-                        .addGap(127, 127, 127)
-                        .addComponent(jLabel11))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jTextFieldCCSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(jTextFieldNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)
-                        .addComponent(jTextFieldLastNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(jButton1)))
-                .addContainerGap(281, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel9)
+                .addGap(34, 34, 34)
+                .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonEdit)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonDelete)
+                .addGap(1, 1, 1))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldCCSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldLastNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonEdit)
+                    .addComponent(jButtonDelete))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -201,10 +199,10 @@ public class Principal extends javax.swing.JFrame {
 
         jComboBoxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
-        jButton2.setText("Guardar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSave.setText("Guardar");
+        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonSaveActionPerformed(evt);
             }
         });
 
@@ -238,7 +236,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(252, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jButtonSave)
                 .addGap(356, 356, 356))
         );
         jPanel1Layout.setVerticalGroup(
@@ -281,7 +279,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(jComboBoxRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addComponent(jButton2)
+                .addComponent(jButtonSave)
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -317,7 +315,7 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         if (!this.validateFields()) {
             JOptionPane.showMessageDialog(this,
                     "Todos los campos son obligatorios, "
@@ -347,20 +345,80 @@ public class Principal extends javax.swing.JFrame {
             e.printStackTrace();
             return;
         }
+        if(!this.isEdit){
         try{
             this.funcionarioController.crearFuncionario(this.funcionario);
         }catch(Exception e){
             e.printStackTrace();
             this.grupoFamiliarController.deleteGrupoFamiliar(this.grupoFamiliar.getId());
             return;
+        }}else {
+            try {
+                this.funcionarioController.editarFuncionarioPorId(
+                        (this.funcionario.getFuncionarioId()),
+                        this.funcionario);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
+            this.isEdit = false;
         }
         
         JOptionPane.showMessageDialog(this,
-                "Funcionario creado con exito");
+                "Funcionario guardado con exito");
         this.cleanFields();
 
+        this.loadFuncionarios();
+        this.jTabbedPane1.setSelectedIndex(0);
+    }//GEN-LAST:event_jButtonSaveActionPerformed
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jTextFieldSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSearchKeyPressed
+        this.modelarTablaFuncionarios.filter(this.jTextFieldSearch.getText(),null);
+    }//GEN-LAST:event_jTextFieldSearchKeyPressed
+
+    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
+        int row = this.jTableFuncionarios.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this,
+                    "Debe seleccionar un funcionario");
+            return;
+        }
+        String cc = this.jTableFuncionarios.getValueAt(row, 0).toString();
+        this.funcionario = this.funcionarioController.obtenerFuncionarioPorId(cc);
+        this.jTextFieldCc.setText(this.funcionario.getFuncionarioId());
+        this.jTextFieldName.setText(this.funcionario.getNombre());
+        this.jTextFieldLastName.setText(this.funcionario.getApellido());
+        this.jTextFieldAddres.setText(this.funcionario.getDireccion());
+        this.jTextFieldPhone.setText(this.funcionario.getTelefono());
+        this.jDateChooser2.setDate(UtilityMethods.localDateToDate(
+                this.funcionario.getFechaNacimiento()));
+        this.jComboBoxCivilState.setSelectedItem(this.funcionario.getEstadoCivil());
+        this.jComboBoxGender.setSelectedItem(this.funcionario.getSexo());
+        this.jComboBoxRol.setSelectedItem(this.funcionario.getGrupofamiliarId().getRol());
+        this.jTabbedPane1.setSelectedIndex(1);
+        this.isEdit = true;
+    }//GEN-LAST:event_jButtonEditActionPerformed
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        int row = this.jTableFuncionarios.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this,
+                    "Debe seleccionar un funcionario");
+            return;
+        }
+        String cc = this.jTableFuncionarios.getValueAt(row, 0).toString();
+        this.funcionario = this.funcionarioController.obtenerFuncionarioPorId(cc);
+        try {
+            this.funcionarioController.eliminarFuncionarioPorId(this.funcionario.getFuncionarioId());
+            this.grupoFamiliarController.deleteGrupoFamiliar(this.funcionario.getGrupofamiliarId().getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+        JOptionPane.showMessageDialog(this,
+                "Funcionario eliminado con exito");
+        this.loadFuncionarios();
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     public void cleanFields() {
         this.jTextFieldCc.setText("");
@@ -426,16 +484,15 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonDelete;
+    private javax.swing.JButton jButtonEdit;
+    private javax.swing.JButton jButtonSave;
     private javax.swing.JComboBox<String> jComboBoxCivilState;
     private javax.swing.JComboBox<String> jComboBoxGender;
     private javax.swing.JComboBox<String> jComboBoxRol;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -452,12 +509,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableFuncionarios;
     private javax.swing.JTextField jTextFieldAddres;
-    private javax.swing.JTextField jTextFieldCCSearch;
     private javax.swing.JTextField jTextFieldCc;
     private javax.swing.JTextField jTextFieldLastName;
-    private javax.swing.JTextField jTextFieldLastNameSearch;
     private javax.swing.JTextField jTextFieldName;
-    private javax.swing.JTextField jTextFieldNameSearch;
     private javax.swing.JTextField jTextFieldPhone;
+    private javax.swing.JTextField jTextFieldSearch;
     // End of variables declaration//GEN-END:variables
 }

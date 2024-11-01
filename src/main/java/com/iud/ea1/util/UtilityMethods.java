@@ -8,4 +8,8 @@ public class UtilityMethods {
     public static LocalDate dateToLocaleDate(Date date) {
         return new java.sql.Date(date.getTime()).toLocalDate();
     }
+
+    public static Date localDateToDate(LocalDate fechaNacimiento) {
+        return java.sql.Date.valueOf(fechaNacimiento);
+    }
 }

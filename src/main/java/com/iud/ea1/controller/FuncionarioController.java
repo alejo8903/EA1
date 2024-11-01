@@ -30,17 +30,17 @@ public class FuncionarioController {
     }
 
 
-    public Funcionario obtenerFuncionarioPorId(int id) throws PersistenceException{
+    public Funcionario obtenerFuncionarioPorId(String id) throws PersistenceException{
     return funcionarioDAO.obtenerPorId(id);
     }
 
 
-    public void editarFuncionarioPorId(int id,Funcionario nuevoFuncionario) throws PersistenceException{
+    public void editarFuncionarioPorId(String id,Funcionario nuevoFuncionario) throws PersistenceException{
     funcionarioDAO.editarFuncionarioPorId(id, nuevoFuncionario);
     }
 
 
-    public void eliminarFuncionarioPorId(int id) throws PersistenceException{
+    public void eliminarFuncionarioPorId(String id) throws PersistenceException{
     funcionarioDAO.eliminarFuncionarioPorId(id);
     }
 

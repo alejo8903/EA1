@@ -31,14 +31,14 @@ public class FuncionarioDAO {
         return funcionarios;
     }
     
-    public Funcionario obtenerPorId(int id) throws PersistenceException{
+    public Funcionario obtenerPorId(String id) throws PersistenceException{
         EntityManager em = emf.createEntityManager();
         Funcionario funcionario = em.find(Funcionario.class, id);
         em.close();
         return funcionario;
     }
 
-    public void editarFuncionarioPorId(int id, Funcionario nuevoFuncionario) throws PersistenceException{
+    public void editarFuncionarioPorId(String id, Funcionario nuevoFuncionario) throws PersistenceException{
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Funcionario funcionario = em.find(Funcionario.class, id);
@@ -57,7 +57,7 @@ public class FuncionarioDAO {
         em.close();
     }
     
-    public void eliminarFuncionarioPorId(int id) throws PersistenceException{
+    public void eliminarFuncionarioPorId(String id) throws PersistenceException{
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Funcionario funcionario = em.find(Funcionario.class, id);
