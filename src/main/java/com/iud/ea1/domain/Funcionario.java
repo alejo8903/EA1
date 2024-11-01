@@ -21,7 +21,6 @@ import java.time.LocalDate;
 public class Funcionario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int funcionarioId;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ID")
