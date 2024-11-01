@@ -59,7 +59,6 @@ public class GrupoFamiliarDAO {
     em.getTransaction().commit();
     em.close();
     }
-    }
-
 }
+
 

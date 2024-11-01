@@ -1,7 +1,13 @@
+com\iud\ea1\dao\MiembroFamiliarDAO.class
+com\iud\ea1\presentation\Principal$1.class
 com\iud\ea1\domain\Funcionario.class
-com\iud\ea1\dao\FuncionarioDAO.class
-com\iud\ea1\domain\MiembroFamiliar.class
 com\iud\ea1\util\JPAUtil.class
-com\iud\ea1\EA1.class
 com\iud\ea1\domain\GrupoFamiliar.class
 com\iud\ea1\domain\InformacionAcademica.class
+com\iud\ea1\dao\FuncionarioDAO.class
+com\iud\ea1\domain\MiembroFamiliar.class
+com\iud\ea1\EA1.class
+com\iud\ea1\controller\FuncionarioController.class
+com\iud\ea1\dao\GrupoFamiliarDAO.class
+com\iud\ea1\dao\InformacionAcademicaDAO.class
+com\iud\ea1\presentation\Principal.class
